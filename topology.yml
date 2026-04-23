@@ -1,0 +1,36 @@
+name: xubuntu-noble-testing
+
+hosts:
+  - name: xubuntu-desktop
+    base_box: 
+      image: xubuntu-noble-x86_64
+      mgmt_user: ubuntu
+    flavor: c4_r8_d60
+
+routers:
+  - name: router
+    base_box:
+      image: debian-12-x86_64
+      mgmt_user: debian
+    flavor: standard.small
+
+networks:
+  - name: network
+    cidr: 10.0.0.0/24
+
+wan:
+  name: internet-connection
+  cidr: 100.100.100.0/24
+
+net_mappings:
+    - host: xubuntu-desktop
+      network: network
+      ip: 10.0.0.10
+
+router_mappings:
+    - router: router
+      network: network
+      ip: 10.0.0.1
+
+groups: []
+
