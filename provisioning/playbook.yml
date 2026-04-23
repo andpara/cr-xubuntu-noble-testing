@@ -1,9 +1,9 @@
 - name: Hello world
   hosts: xubuntu-desktop
   gather_facts: yes
-  become: true
+  become: yes
   roles:
-    - role: user-access
+    - name: user-access
       user_access_username: user
       user_access_password: Password123
       user_access_sudo: True
